@@ -1,0 +1,13 @@
+**/bin/
+**/obj/
+.idea/
+**/.idea/
+*.sln.iml
+.vs/
+*.user
+*.suo
+**/appsettings.Development.json
+.env
+.env.*
+.DS_Store
+tignore
