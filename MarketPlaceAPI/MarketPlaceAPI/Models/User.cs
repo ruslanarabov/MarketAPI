@@ -15,3 +15,29 @@ public enum UserRole : byte
     Seller = 2,
     Admin = 3
 }
+
+public class UserConfiguration : IEntityTypeConfiguration<User>
+{
+    public void Configure(EntityTypeBuilder<User> builder)
+    {
+        builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.FullName)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(x => x.Email)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.HasIndex(x => x.Email)
+            .IsUnique();
+
+        builder.Property(x => x.Password)
+            .IsRequired();
+
+        builder.Property(x => x.Role)
+            .HasConversion<byte>()
+            .IsRequired();
+    }
+}
